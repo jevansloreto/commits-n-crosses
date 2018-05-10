@@ -24,7 +24,7 @@ Instructions:
 
 
 1. To begin, one player must make a fork of the repository (repo), using the "Fork" button on the top right. This creates a copy of the repository in the user's own account, so they have full control over it, and their changes will not affect the main repository.
-2. The player who owns the forked repository (player 1) should invite the other player (player 2) to edit their fork. To do this
+2. The player who owns the forked repository (player 1) should invite the other player (player 2) to edit their fork. To do this:
   1. Click "Settings" at the top of the repository
   2. Choose "Collaborators" on the left
   3. Enter player 2's username in the search box and click "Add collaborator"
