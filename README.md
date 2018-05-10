@@ -19,9 +19,9 @@ Commits N Crosses
 
 -------------
 
- Both players should clone the repository:
+ Both players should clone a fork of the repository:
 
-    git clone https://github.com/LoretoCS/commits-n-crosses
+    git clone https://github.com/<username>/commits-n-crosses
     cd <reponame>
    
  Once in the repository directory, both players should set their config file to identify themselves to Git:
