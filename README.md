@@ -13,77 +13,56 @@ Commits N Crosses
 
 -------------
 
- Player X: _Jevans_
+ Player X: ________
  
  Player O: ________
 
 -------------
 
- Both players should clone a fork of the repository:
-
-    git clone https://github.com/<username>/commits-n-crosses
-    cd <reponame>
-   
- Once in the repository directory, both players should set their config file to identify themselves to Git:
-
-    git config user.email "<user@email.com>"
-    git config user.name "<user name>"	
-
- And to save typing the password with every push, both players should tell Git to remember it for a couple of hours:
-
-    git config credential.helper 'cache --timeout 7200'
-
- Player 1 should create a new local branch, and check it out
-
-    git branch <player1 user name>/game1
-    git checkout <player1 user name>/game1
-
- Player 1 then makes a move.
+Instructions:
 
 
- To make the first move Player 1 should open README.md in a text editor, add the player names, make the first move, and save. Once the change is saved, Player 1 should stage it for committing, commit it, and push to the remote:	
 
-    git add .
-    git commit -m "some witty comment"
-    git push -u origin <player1 user name>/game1
+1. To begin, one player must make a fork of the repository (repo), using the "Fork" button on the top right. This creates a copy of the repository in the user's own account, so they have full control over it, and their changes will not affect the main repository.
+2. The player who owns the forked repository (player 1) should invite the other player (player 2) to edit their fork. To do this
+  1. Click "Settings" at the top of the repository
+  2. Choose "Collaborators" on the left
+  3. Enter player 2's username in the search box and click "Add collaborator"
+3. Player 2 will receive an email with an invitation - they should click the link to accept the invite.
+4. Both players should clone a copy of the repository. To do that:
+  1. Create a new folder in your N drive to store a copy of the repository
+  2. Right click on the folder and choose "Git Bash Here". This will open a Bash command window where you can execute Git commands
+  3. In the bash window enter the command `git clone https://github.com/<username>/commits-n-crosses` - replace <username> with player 1's username. Once you hit enter this should create a new folder called `commits-n-crosses` which will contain the repository and the code.
+5. Change the active working directory to the one containing the repo by entering the command `cd commits-n-crosses` (TIP: Bash will automatically complete the folder name for you if you hit tab after entring a few characters)
+6. So that Git can identify you, set your email address and username by:
+  1. Enter the command `git config user.email "your email address"`
+  2. Enter the command `git config user.name "your name"`  
+7. Enter `git config credential.helper 'cache --timeout 7200'` - this tells Git to remember your password to save you having to type it every time.
+8. To keep the changes in each game separate from its original state, player 1 should create a new branch for this round of the game:
+  1. `git branch game1` - this creates the new branch
+  2. `git checkout game1` - this activates the new branch, so that any changes we make apply only in this branch
+  3. `git push -u origin game1` - this shares the branch with the Github copy of the repo, allowing player 2 to see it. Player 1 should enter their username and password when prompted. The `-u` flag tells Git to "track" the branch with the same name on Github, and create it if it doesn't exist.
+9. Player 2 can now take a copy of the new branch and switch to it by:
+  1. `git fetch` - to synchronise player 2's copy of the repo with the changes that are on Github
+  2. `git checkout game1` - to create a new branch in player 2's repository, and have it keep track of changes in the Github version of the game1 branch
+10. Player 1 can now make the first move. To do this:
+  1. Open the folder that was created when cloning the repo and find the README.md file (this one!)
+  2. Edit the README.md file using a text editor such as Notepad++
+  3. Edit the game board at the top by placing an X in the grid and save the file
+  4. In the Bash window, tell Git that you want to store the changes to all files in this folder - `git add .`
+  5. Store the changes with a message explaining what the changes are `git commit -m "a message explaining the changes"`
+  6. Synchronise the repo on Github with the changes `git push`
+11. Player 2 can now update their local copy of the repo with player 1's move and then make their own move:
+  1. In the Bash window, enter `git pull` - this will update Player 2's version of the README.md file with Player 1's move
+  2. Player 2 should update the README.md file with their own move, and save the file
+  3. To share the move with Player 1, Player 2 should enter `git add .` 
+  4. `git commit -m "a message to explain the change"`
+  5. `git push` - Player 2 should enter their username and password when prompted
+12. Both players can now take it in turns to make a move, following the instructions in step 11 until someone wins the game.
+13. To start a new game, player 2 should check out the master branch, and create a new branch for the new game:
+  1. `git checkout master` - this reverts Player 2's copy of the README.md file to its original state
+  2. `git branch game2` 
+  3. `git checkout game2`
+  4. `git push -u origin game2` 
+14. Play can now continue as before.
 
- Enter password when prompted.
-    
- After the first move, Player 2 should fetch the changes, and check out the game branch.
-
-    git fetch
-    git checkout <player1 user name>/game1
-
- Player 2 can see the commit message using:
-
-    git show
-
- If there is no command prompt after viewing git show, pressing "q" will exit the viewer.
-
- Player 2 should then open the README.md in a text editor to see their opponent's first move. They should then make a move in the same way Player 1 did, committing and pushing to the remote. 
-
- After the initial move, once both players have checked out the game branch, they can see their opponents move after they have committed and pushed by pulling changes:
-
-    git pull
-
- And using show to view the commit message
-
-    git show
-    
- Reopen README.md and view their opponent's move, make their own move and save. Then the players should share the move by staging, comitting and pushing:
-
-    git add .
-    git commit -m "another comment"
-    git push origin <player1 user name>/game1
-
- Each player should repeat the pull, change, stage, commit and push steps until someone wins the game.
-
--------------
-
- To start a new game Player 2 checks out master branch, creates a new branch, checks it out and continues as Player 1 did with the first move:
-
-    git checkout master
-    git branch <player2 user name>/game2
-    git checkout <player2 user name>/game2
-
- Begin again!
