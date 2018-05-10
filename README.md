@@ -13,7 +13,7 @@ Commits N Crosses
 
 -------------
 
- Player X: ________
+ Player X: _Jevans_
  
  Player O: ________
 
